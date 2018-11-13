@@ -51,13 +51,15 @@ public class Main {
         String schoolName [] = new String[columns.length];
         double averageArray [] = new double[columns.length];
 
-
-        for (int i = 0; i < array.length; i++) {
+        int goUp = 0;
+        for (int i = 0; i < array.length; i++, goUp++) {
             double num1, num2, num3;
-
+//PROBLEM----scanner system is reading the blank lines in the file try and fix it
             columns = array[i].split("\t");
-            if(columns.length == 22) {
-                int goUp = 0;
+
+            if(columns.length == 22 || columns.equals("")) {
+
+                System.out.println(columns[18]);
 
                 num1 = Double.parseDouble(columns[18]);
                 num2 = Double.parseDouble(columns[19]);
@@ -71,7 +73,7 @@ public class Main {
 
                 System.out.println(schoolName[goUp] + ": " + averageArray[goUp]);
 
-                goUp++;
+
             }
 
             else {
@@ -79,6 +81,30 @@ public class Main {
             }
         }
 
+        double highestAverage = 0;
+        double secondAverage = 0;
+        double thirdAverage = 0;
+
+        int k = 0;
+
+        for (int i = 1; i < averageArray.length; i++, k++) {
+            if (averageArray[k] > averageArray[i]) {
+                thirdAverage = secondAverage;
+                secondAverage = highestAverage;
+                highestAverage = averageArray[i];
+
+            }
+
+            else if (averageArray[k] == averageArray[i]){
+
+            }
+
+            else {
+                int dumb = 0;
+            }
+
+        }
+        System.out.println(highestAverage + secondAverage + thirdAverage);
         //READ ME ------- COMPARE THE INDICES IN THE AVERAGE ARRAY TO FIND THE AVERAGE AND PUT THE TEAM NAME THERE
     }
 
